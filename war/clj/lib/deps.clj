@@ -1,0 +1,1 @@
+{:dependencies {org.clojure/clojure {:version "1.3.0"}, org.clojure/clojure-contrib {:version "1.2.0"}, joda-time {:version "1.6"}}, :dev-dependencies {lein-marginalia {:version "0.6.1"}, cake-marginalia {:version "0.6.0"}}, :ext-dependencies {}}
