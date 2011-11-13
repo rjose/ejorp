@@ -1,5 +1,6 @@
 package com.ejorp.core;
 
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -14,7 +15,7 @@ public class HelloWorldTest {
     public static class StaticProvider {
         @DataProvider(name="create")
         public static Object[][] createData() {
-            return new Object[][] {new Object[] {new Integer(42)}};
+            return new Object[][] {new Object[] {new HelloWorld()}};
         }
     }
 
@@ -24,7 +25,8 @@ public class HelloWorldTest {
     }
 
     @Test(dataProvider = "create", dataProviderClass = HelloWorldTest.StaticProvider.class)
-    public void test(Integer n) {
-        assert n == 42;
+    public void test(HelloWorld app) {
+        String result = app.getHtml();
+        Assert.assertEquals(result, "[10.0]");
     }
 }
