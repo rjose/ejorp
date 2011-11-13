@@ -1,5 +1,6 @@
 package com.ejorp.core;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 /**
@@ -10,8 +11,20 @@ import org.testng.annotations.Test;
  * To change this template use File | Settings | File Templates.
  */
 public class HelloWorldTest {
+    public static class StaticProvider {
+        @DataProvider(name="create")
+        public static Object[][] createData() {
+            return new Object[][] {new Object[] {new Integer(42)}};
+        }
+    }
+
     @Test
     public void testGetHtml() throws Exception {
         assert 1 == 1;
+    }
+
+    @Test(dataProvider = "create", dataProviderClass = HelloWorldTest.StaticProvider.class)
+    public void test(Integer n) {
+        assert n == 42;
     }
 }
