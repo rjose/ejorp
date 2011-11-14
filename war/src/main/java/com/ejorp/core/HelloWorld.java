@@ -7,14 +7,17 @@ package com.ejorp.core;
 import com.google.gson.Gson;
 import ejorp_clj.core.Sample;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.GET;
-import javax.ws.rs.Produces;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Logger;
 
 /**
  * REST Web Service
@@ -23,6 +26,7 @@ import javax.ws.rs.Produces;
  */
 @Path("helloworld")
 public class HelloWorld {
+    private Logger logger = Logger.getLogger("ejorp-spike");
 
     @Context
     private UriInfo context;
@@ -37,7 +41,20 @@ public class HelloWorld {
      */
     @GET
     @Produces("application/json")
-    public String getHtml() {
+    public String getHtml() throws NamingException, SQLException {
+        // NOTE: Just a hack to get database tested
+        InitialContext ctx = new InitialContext();
+        DataSource ds = (DataSource) ctx.lookup("jdbc/ejorp");
+        Connection conn = ds.getConnection();
+
+        Statement statement = conn.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM tasks");
+        while(resultSet.next()) {
+            logger.info("-----> " + resultSet.getString(1));
+        }
+        resultSet.close();
+        statement.close();
+
         Gson gson = new Gson();
         double[] coeffs = {Sample.binomial(5, 3)};
         return gson.toJson(coeffs);

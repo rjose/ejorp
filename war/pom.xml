@@ -60,6 +60,12 @@
         </dependency>
 
         <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.0-801.jdbc4</version>
+        </dependency>
+
+        <dependency>
             <groupId>ejorp</groupId>
             <artifactId>ejorp</artifactId>
             <version>0.0.1-SNAPSHOT</version>
