@@ -9,6 +9,10 @@ import ejorp_clj.core.Sample;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.sql.DataSource;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -17,6 +21,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -42,6 +47,16 @@ public class HelloWorld {
     @GET
     @Produces("application/json")
     public String getHtml() throws NamingException, SQLException {
+        // Just a couple of tests
+        lookUpTaskViaJPA();
+        lookUpTasksViaJDBC();
+
+        Gson gson = new Gson();
+        double[] coeffs = {Sample.binomial(5, 3)};
+        return gson.toJson(coeffs);
+    }
+
+    private void lookUpTasksViaJDBC() throws NamingException, SQLException {
         // NOTE: Just a hack to get database tested
         InitialContext ctx = new InitialContext();
         DataSource ds = (DataSource) ctx.lookup("jdbc/ejorp");
@@ -50,14 +65,23 @@ public class HelloWorld {
         Statement statement = conn.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM tasks");
         while(resultSet.next()) {
-            logger.info("-----> " + resultSet.getString(1));
+            logger.info("-----> (JDBC)" + resultSet.getString(1));
         }
         resultSet.close();
         statement.close();
+    }
 
-        Gson gson = new Gson();
-        double[] coeffs = {Sample.binomial(5, 3)};
-        return gson.toJson(coeffs);
+    private void lookUpTaskViaJPA() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejorpPU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+
+        List<Task> tasks = em.createNamedQuery("findAllTasks").getResultList();
+        for(Task t: tasks) {
+            logger.info("-----> Task (from JPA): " + t.getName());
+        }
+        em.close();
+        emf.close();
     }
 
     /**
