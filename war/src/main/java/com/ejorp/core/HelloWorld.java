@@ -6,6 +6,7 @@ package com.ejorp.core;
 
 import com.google.gson.Gson;
 import ejorp_clj.core.Sample;
+import org.apache.commons.io.IOUtils;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -17,6 +18,12 @@ import javax.sql.DataSource;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -46,10 +53,23 @@ public class HelloWorld {
      */
     @GET
     @Produces("application/json")
-    public String getHtml() throws NamingException, SQLException {
+    public String getHtml() throws NamingException, SQLException, IOException {
         // Just a couple of tests
         lookUpTaskViaJPA();
         lookUpTasksViaJDBC();
+
+        // Try making an http request to couch
+        URL url = new URL("http://localhost:5984/hello-world");
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        try {
+            StringWriter writer = new StringWriter();
+            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+            IOUtils.copy(in, writer, "UTF-8");
+            logger.info("-----> From couchdb: " + writer.toString());
+        }
+        finally {
+            urlConnection.disconnect();
+        }
 
         Gson gson = new Gson();
         double[] coeffs = {Sample.binomial(5, 3)};
