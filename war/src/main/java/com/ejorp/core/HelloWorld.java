@@ -18,10 +18,7 @@ import javax.sql.DataSource;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.Connection;
@@ -111,6 +108,21 @@ public class HelloWorld {
      */
     @PUT
     @Consumes("text/html")
-    public void putHtml(String content) {
+    public void putHtml(String content) throws IOException {
+        logger.info("=====> Putting to HelloWorld");
+        // TODO: Figure out how to check the response
+        URL url = new URL("http://localhost:5984/hello-world/6789");
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setDoOutput(true);
+        connection.setRequestMethod("PUT");
+
+        OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());
+        out.write("{\"title\": \"Ouch\", \"_rev\": \"2-1fc6347f9d61de367b724bb22baf0c81\"}");
+        out.close();
+
+        StringWriter writer = new StringWriter();
+        InputStream in = new BufferedInputStream(connection.getInputStream());
+        IOUtils.copy(in, writer, "UTF-8");
+        logger.info("-----> From couchdb: " + writer.toString());
     }
 }
