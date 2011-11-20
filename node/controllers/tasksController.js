@@ -1,3 +1,5 @@
+var Logger = require('../lib/logger');
+
 function createTask(req, res, next) {
   console.log("Creating task");
   setTimeout(function() {
@@ -6,6 +8,7 @@ function createTask(req, res, next) {
 }
 
 function getTask(req, res, next) {
+  Logger.log("info", "Getting a task (log)");
   console.log("Getting task: " + req.params.taskId);
   res.json({id: 101, title: "An awesome task"});
 }
