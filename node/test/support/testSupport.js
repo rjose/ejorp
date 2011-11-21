@@ -5,7 +5,7 @@ var http = require('http');
 //
 //   ejorpTopic('GET', '/tasks/123')
 function configureEjorpTopic(port) {
-  function ejorpTopic(method, path) {
+  function ejorpTopic(method, path, options) {
     var httpOptions = {
       host: '127.0.0.1',
       port: port,
@@ -21,9 +21,15 @@ function configureEjorpTopic(port) {
           body = body + chunk;
         });
         res.on('end', function() {
+          // NOTE: In case you're wondering, this is where the result is ultimately
+          // returned
           self.callback(res, body);
         });
       });
+      if (options.data) {
+        console.log(options.data);
+        request.write(JSON.stringify(options.data));
+      }
       request.end();
     }
 

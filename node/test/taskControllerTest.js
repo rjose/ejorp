@@ -19,19 +19,39 @@ app.listen(PORT);
 var suite = vows.describe('TasksController');
 
 suite.addBatch({
-  'RESTful calls': {
-    topic: ejorpTopic('GET', '/tasks/123'),
+  'Get task': {
+    topic: ejorpTopic('GET', '/tasks/123', {}),
 
     'should get 200': function(res, body) {
       console.log('=====> ' + body);
       assert.equal(res.statusCode, 200);
     }
   },
+  
+  'Create task': {
+    // NOTE: It would be nice to specify the context here
+    topic: ejorpTopic('POST', '/tasks', {data: {title: 'A new task'}}),
+    'should get 201': function(res, body) {
+      console.log('=====> ' + body);
+      // TODO: Check that we get a task ID
+      assert.equal(res.statusCode, 201);
+    }
+  },
 
-  'This is one context': {
-    topic: 42,
-    'is positive': function(num) {
-      assert.isTrue(num === 42);
+  'Update a task': {
+    topic: ejorpTopic('PUT', '/tasks/123', {data: {title: 'Updated title'}}),
+    'should get 204': function(res, body) {
+      console.log(body);
+      assert.equal(res.statusCode, 204);
+    }
+  },
+
+  'Delete task': {
+    topic: ejorpTopic('DELETE', '/tasks/123', {}),
+    'should get 204': function(res, body) {
+      console.log(body);
+      assert.equal(res.statusCode, 204);
     }
   }
+
 }).export(module);
