@@ -22,8 +22,11 @@ suite.addBatch({
   'Get top tasks': {
     topic: ejorpTopic('GET', '/pages/top-tasks', {}),
     'should get a 200': function(res, body) {
-      console.log(body);
       assert.equal(res.statusCode, 200);
+    },
+    'should get a list of top tasks': function(res, body) {
+      var data = JSON.parse(body);
+      assert.equal(3, data.tasks.length);
     }
   },
 });

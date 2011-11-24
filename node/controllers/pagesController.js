@@ -5,8 +5,14 @@ var Logger = require('../lib/logger');
 // some message. When done, we'll send data via a socket.
 function topTasks(req, res, next) {
   console.log("Getting top tasks");
-  // TODO: Read some sample data from file and return it
-  res.json({message: 'Top tasks'}, 200);
+  // TODO: Stub this out 
+  res.json({
+    tasks: [
+      {title: 'Get server up', recentActivity: [{personId: 10, picture: 'http://image.png'}], isActive: true},
+      {title: 'Get server deployed', recentActivity: [{personId: 14, picture: 'http://image.png'}], isActive: false},
+      {title: 'Test server', recentActivity: [{personId: 30, picture: 'http://image.png'}], isActive: false}],
+    alert: {type: 'FIRST_TIME_USER'}},
+  200);
 }
 
 
