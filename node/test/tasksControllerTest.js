@@ -24,7 +24,7 @@ suite.addBatch({
     topic: ejorpTopic('GET', '/tasks/123', {}),
 
     'should get 200': function(res, body) {
-      console.log('=====> ' + body);
+      console.log('Get task=====> ' + body);
       assert.equal(res.statusCode, 200);
     }
   },
@@ -33,7 +33,7 @@ suite.addBatch({
     // NOTE: It would be nice to specify the context here
     topic: ejorpTopic('POST', '/tasks', {data: {title: 'A new task'}}),
     'should get 201': function(res, body) {
-      console.log('=====> ' + body);
+      console.log('Create task=====> ' + body);
       // TODO: Check that we get a task ID
       assert.equal(res.statusCode, 201);
     }
@@ -42,7 +42,7 @@ suite.addBatch({
   'Update a task': {
     topic: ejorpTopic('PUT', '/tasks/123', {data: {title: 'Updated title'}}),
     'should get 204': function(res, body) {
-      console.log(body);
+      console.log('Update task=====>', body);
       assert.equal(res.statusCode, 204);
     }
   },
@@ -50,7 +50,7 @@ suite.addBatch({
   'Delete task': {
     topic: ejorpTopic('DELETE', '/tasks/123', {}),
     'should get 204': function(res, body) {
-      console.log(body);
+      console.log('Delete task=====>' + body);
       assert.equal(res.statusCode, 204);
     }
   }
@@ -62,7 +62,7 @@ suite.addBatch({
     topic: ejorpTopic('PUT', '/tasks/123/checklist', 
                       {data: [{title: 'Item 1', done: false}, {title: 'Item 2', done: true}]}),
     'should get a 200': function(res, body) {
-      console.log(body);
+      console.log('Add checklist=====>' + body);
       assert.equal(res.statusCode, 200);
     }
   },
@@ -70,7 +70,7 @@ suite.addBatch({
   'Blocked on new task': {
     topic: ejorpTopic('POST', '/tasks/123/blocked-on', {data: [{title: 'Preq 1'}]}),
     'should get a 201': function(res, body) {
-      console.log(body);
+      console.log('Blocked on task=====>' + body);
       assert.equal(res.statusCode, 201);
     }
   },
@@ -78,7 +78,7 @@ suite.addBatch({
   'Blocked on existing task': {
     topic: ejorpTopic('PUT', '/tasks/123/blocked-on', {data: [{taskId: '321'}]}),
     'should get a 200': function(res, body) {
-      console.log(body);
+      console.log('Blocked on=====> ' + body);
       assert.equal(res.statusCode, 200);
     }
   },
@@ -86,7 +86,7 @@ suite.addBatch({
   'Merge tasks': {
     topic: ejorpTopic('PUT', '/tasks/123/merge', {data: [{taskId: '321'}]}),
     'should get a 200': function(res, body) {
-      console.log(body);
+      console.log('Merge task=====> ' + body);
       assert.equal(res.statusCode, 200);
     }
   },
