@@ -1,31 +1,42 @@
-var Redis = require("redis");
+var Redis = require("redis")
+  , Logger = require('./logger')
+;
 
-m_client = Redis.createClient();
-// TODO: Handle redis errors
+var m_client = Redis.createClient();
+var m_mockedResponses = null;
+
+m_client.on("error", function (err) {
+  Logger.log("fatal", err);
+});
+
 
 function getDocument(documentId, callback) {
-  // TODO: Figure out how to stub this out
-  m_client.get(documentId, function(err, docString) {
-    if(err) {
-      // TODO: Handle error
-    }
-    callback(null, JSON.parse(docString));
-  });
+  if (m_mockedResponses) { 
+    callback(null, JSON.parse(m_mockedResponses[documentId]));
+    return;
+  } 
+  else {
+    m_client.get(documentId, function(err, docString) {
+      if(err) {
+        // TODO: Handle error
+      }
+      callback(null, JSON.parse(docString));
+    });
+    return;
+  }
+}
 
-  //var document = {
-    //tasks: [
-      //{title: 'Get server up', recentActivity: [{personId: 10, picture: 'http://image.png'}], isActive: true},
-      //{title: 'Get server deployed', recentActivity: [{personId: 14, picture: 'http://image.png'}], isActive: false},
-      //{title: 'Test server', recentActivity: [{personId: 30, picture: 'http://image.png'}], isActive: false}],
-    //alert: {type: 'FIRST_TIME_USER'}};
-  //m_client.set(documentId, JSON.stringify(document));
-  
-  //callback(null, document);
-  return;
+// This is used to mock out responses from the DocCache for testing
+function mockResponse(key, value) {
+  if (!m_mockedResponses) {
+    m_mockedResponses = {};
+  }
+  m_mockedResponses[key] = value;
 }
 
 var interface = {
-  getDocument: getDocument
+  getDocument: getDocument,
+  mockResponse: mockResponse
 };
 
 module.exports = interface;
