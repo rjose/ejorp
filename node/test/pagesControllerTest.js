@@ -4,26 +4,18 @@ var vows = require('vows')
   , TestSupport = require('./support/testSupport')
   , PagesController = require('../controllers/pagesController')
   , DocCache = require('../lib/docCache')
+  , Fs = require('fs')
   , app = require('../lib/ejorpServer').app
   , PORT = 7777
   , ejorpTopic = TestSupport.configureEjorpTopic(PORT)
 ;
 
-// TODO: Need to mock out connections to Couch and to ejorp-engine
-
 // Set up server
 PagesController.addRoutes(app, '/');
 app.listen(PORT);
 
-// TODO: Read this from a file
-var document = {
-  tasks: [
-    {title: 'Get server up', recentActivity: [{personId: 10, picture: 'http://image.png'}], isActive: true},
-    {title: 'Get server deployed', recentActivity: [{personId: 14, picture: 'http://image.png'}], isActive: false},
-    {title: 'Test server', recentActivity: [{personId: 30, picture: 'http://image.png'}], isActive: false}],
-  alert: {type: 'FIRST_TIME_USER'}};
-
-DocCache.mockResponse('123#top-tasks', JSON.stringify(document));
+// Mock responses
+DocCache.mockResponse('123#top-tasks', Fs.readFileSync('./test/data/top-tasks-1.json', 'utf-8'));
 
 // Set up test suite
 var suite = vows.describe('PagesController');
