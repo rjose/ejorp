@@ -9,13 +9,15 @@ var Logger = require('../lib/logger')
 // some message. When done, we'll send data via a socket.
 function topTasks(req, res, next) {
   var authToken = req.cookies.ejorp_auth;
+  var userId = req.cookies.ejorp_userid;
   Step(
     function lookUpUser() {
-      Auth.lookUpUser(authToken, this);
+      Auth.lookUpUser(userId, authToken, this);
     },
     function requestDocument(err, user) {
       if (err) {
         // TODO: Test this
+        console.log("TODO: Deal with unauthorized response")
         res.json(Auth.unauthorizedResponse());
         return next();
       }

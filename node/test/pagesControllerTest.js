@@ -4,6 +4,7 @@ var vows = require('vows')
   , TestSupport = require('./support/testSupport')
   , PagesController = require('../controllers/pagesController')
   , DocCache = require('../lib/docCache')
+  , Auth = require('../lib/auth')
   , Fs = require('fs')
   , app = require('../lib/ejorpServer').app
   , PORT = 7777
@@ -15,6 +16,7 @@ PagesController.addRoutes(app, '/');
 app.listen(PORT);
 
 // Mock responses
+Auth.mockLookUpUser('123', 'my-token', {});
 DocCache.mockResponse('123#top-tasks', Fs.readFileSync('./test/data/top-tasks-1.json', 'utf-8'));
 
 // Set up test suite
@@ -22,7 +24,7 @@ var suite = vows.describe('PagesController');
 
 suite.addBatch({
   'When getting top tasks': {
-    topic: ejorpTopic('GET', '/pages/top-tasks', {headers: {'Cookie': 'ejorp_auth=my-token'}}),
+    topic: ejorpTopic('GET', '/pages/top-tasks', {headers: {'Cookie': 'ejorp_auth=my-token; ejorp_userid=123'}}),
 
     'should get a 200 response': function(res, body) {
       assert.equal(res.statusCode, 200);
