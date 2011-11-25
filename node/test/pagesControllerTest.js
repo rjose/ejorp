@@ -20,7 +20,7 @@ var suite = vows.describe('PagesController');
 
 suite.addBatch({
   'When getting top tasks': {
-    topic: ejorpTopic('GET', '/pages/top-tasks', {}),
+    topic: ejorpTopic('GET', '/pages/top-tasks', {headers: {'Cookie': 'ejorp_auth=my-token'}}),
 
     'should get a 200 response': function(res, body) {
       assert.equal(res.statusCode, 200);

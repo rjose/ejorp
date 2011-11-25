@@ -1,18 +1,35 @@
-var Logger = require('../lib/logger');
+var Logger = require('../lib/logger')
+  , DocCache = require('../lib/docCache')
+  , Auth = require('../lib/auth')
+  , Step = require('step')
+;
 
 // TODO: Hook this up to Redis to pull info out. If there's a miss, 
 // we should hit the ejorp engine for it. While waiting, we should display
 // some message. When done, we'll send data via a socket.
 function topTasks(req, res, next) {
-  console.log("Getting top tasks");
-  // TODO: Stub this out 
-  res.json({
-    tasks: [
-      {title: 'Get server up', recentActivity: [{personId: 10, picture: 'http://image.png'}], isActive: true},
-      {title: 'Get server deployed', recentActivity: [{personId: 14, picture: 'http://image.png'}], isActive: false},
-      {title: 'Test server', recentActivity: [{personId: 30, picture: 'http://image.png'}], isActive: false}],
-    alert: {type: 'FIRST_TIME_USER'}},
-  200);
+  var authToken = req.cookies.ejorp_auth;
+  Step(
+    function lookUpUser() {
+      Auth.lookUpUser(authToken, this);
+    },
+    function requestDocument(err, user) {
+      if (err) {
+        // TODO: Test this
+        res.json(Auth.unauthorizedResponse());
+        return next();
+      }
+      var docId = user.userId + "#top-tasks";
+      DocCache.getDocument(docId, this);
+    },
+    function returnDocument(err, document) {
+      if (err) {
+         // TODO: Make request to ejorp engine if we couldn't find it in the doc cache
+      }
+      res.json(document, 200);
+      return next();
+    }
+  );
 }
 
 
