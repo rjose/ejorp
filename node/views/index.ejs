@@ -1,0 +1,13 @@
+<h1>Howdy</h1>
+
+<script type="text/javascript">
+function onLinkedInAuth() {
+  IN.API.Profile("me").result( function(me) {
+      var id = me.values[0].id;
+      console.log("Member id: " + id);
+      // AJAX call to pass back id to your server
+  });
+}
+</script>
+
+<script type="IN/Login" data-onAuth="onLinkedInAuth"></script>

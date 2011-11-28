@@ -4,7 +4,6 @@
   , "private": true
   , "dependencies": {
       "express": "2.5.0"
-    , "jade": ">= 0.0.1"
     , "socket.io": "0.8.7"
     , "ejs": "0.4.3"
     , "vows": "0.5.13"
