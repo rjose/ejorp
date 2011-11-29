@@ -4,7 +4,9 @@
 function onLinkedInAuth() {
   IN.API.Profile("me").result( function(me) {
       var id = me.values[0].id;
+      var loginHash = '<%= loginHash %>';
       console.log("Member id: " + id);
+      console.log("Login hash: " + loginHash);
       // AJAX call to pass back id to your server
   });
 }

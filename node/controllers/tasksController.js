@@ -1,10 +1,40 @@
-var Logger = require('../lib/logger');
+var Logger = require('../lib/logger')
+  , Step = require('step')
+  , Auth = require('../lib/auth')
+  , _ = require('underscore')
+;
+
+function lookUpUserByReq(req, callback) {
+  var userId = req.cookies.ejorp_userid;
+  var authToken = req.cookies.ejorp_auth;
+  
+  Auth.lookUpUser(userId, authToken, callback);
+  // TODO: Implement the failover to ejorp engine here
+}
+
+
+function inAuthorizedGroup(groupKey, userInfo) {
+  return _.include(userInfo.groups, groupKey); 
+}
 
 function createTask(req, res, next) {
-  console.log("Creating task");
-  setTimeout(function() {
-    res.json({message: 'Created task'}, 201);
-  }, 100);
+  Step(
+    function lookUpUser() {
+      lookUpUserByReq(req, this);
+    },
+    function createTask(err, userInfo) {
+      if (err || !inAuthorizedGroup(req.body.groupKey, userInfo)) {
+        res.json({message: 'You are not authorized to complete this action'}, 403);
+        return;
+      }
+
+      var title = req.body.title;
+      // TODO: Actually create a task
+
+      console.log("Creating task: " + title);
+      res.json({message: 'Created task'}, 201);
+    }
+  );
 }
 
 function getTask(req, res, next) {

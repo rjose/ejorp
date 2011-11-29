@@ -3,6 +3,7 @@ var vows = require('vows')
   , assert = require('assert')
   , TestSupport = require('./support/testSupport')
   , RootController = require('../controllers/rootController')
+  , EjorpEngine = require('../lib/ejorpEngine')
   , Auth = require('../lib/auth')
   , Fs = require('fs')
   , app = require('../lib/ejorpServer').app
@@ -19,11 +20,28 @@ var suite = vows.describe('RootController');
 
 suite.addBatch({
   'When getting the root page': {
-    topic: "TODO: Add topic",
-    'should get a 200 response': function(topic) {
-      assert.equal("TODO: Finish this", "DONE");
+    topic: ejorpTopic('GET', '/', {}),
+    'should get a 200 response': function(res, body) {
+      assert.equal(res.statusCode, 200);
     }
   }
-})
+});
+
+// Stub out ejorp engine to return a token for this call
+EjorpEngine.mockResponse('generateAuthToken', 'abracadabra');
+
+suite.addBatch({
+  'Can sign in': {
+    topic: ejorpTopic('POST', '/signin', {headers: {'Content-Type': 'application/json'}, data: {memberId: 'abc', loginHash: '123'}}),
+    'should get a 201 response': function(res, body) {
+      assert.equal(res.statusCode, 201);
+    },
+
+    'should have auth cookies set': function(res, body) {
+      assert.deepEqual([ 'ejorp_auth=abracadabra', 'ejorp_userid=abc' ], res.headers['set-cookie']);
+    }
+
+  }
+});
 
 suite.export(module);

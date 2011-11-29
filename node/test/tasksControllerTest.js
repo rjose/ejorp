@@ -2,18 +2,21 @@ var vows = require('vows')
   , http = require('http')
   , assert = require('assert')
   , TestSupport = require('./support/testSupport')
+  , Auth = require('../lib/auth')
   , TasksController = require('../controllers/tasksController')
   , app = require('../lib/ejorpServer').app
   , PORT = 7777
   , ejorpTopic = TestSupport.configureEjorpTopic(PORT)
 ;
 
-// TODO: Need to mock out connections to Couch and to ejorp-engine
-
 // Set up server
 TasksController.addRoutes(app, '/');
 app.listen(PORT);
 
+Auth.mockLookUpUser('123', 'my-token', {groups: [22, 33, 44], authTokens: ['my-token']});
+
+var DEFAULT_HEADERS = {'Content-Type': 'application/json',
+  'Cookie': 'ejorp_auth=my-token; ejorp_userid=123'};
 
 // Set up test suite
 var suite = vows.describe('TasksController');
@@ -28,10 +31,9 @@ suite.addBatch({
       assert.equal(res.statusCode, 200);
     }
   },
-  
   'Create task': {
     // NOTE: It would be nice to specify the context here
-    topic: ejorpTopic('POST', '/tasks', {data: {title: 'A new task'}}),
+    topic: ejorpTopic('POST', '/tasks', {headers: DEFAULT_HEADERS, data: {title: 'A new task', groupKey: 22}}),
     'should get 201': function(res, body) {
       console.log('Create task=====> ' + body);
       // TODO: Check that we get a task ID
