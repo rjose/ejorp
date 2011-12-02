@@ -1,43 +1,23 @@
 var Logger = require('../lib/logger')
-  , Step = require('step')
-  , Auth = require('../lib/auth')
+  , Utils = require('./utils')
   , _ = require('underscore')
 ;
 
-function lookUpUserByReq(req, callback) {
-  var userId = req.cookies.ejorp_userid;
-  var authToken = req.cookies.ejorp_auth;
-  
-  Auth.lookUpUser(userId, authToken, callback);
-  // TODO: Implement the failover to ejorp engine here
-}
-
-
-function inAuthorizedGroup(groupKey, userInfo) {
-  return _.include(userInfo.groups, groupKey); 
-}
 
 function createTask(req, res, next) {
-  Step(
-    function lookUpUser() {
-      lookUpUserByReq(req, this);
-    },
-    function createTask(err, userInfo) {
-      if (err || !inAuthorizedGroup(req.body.groupKey, userInfo)) {
-        res.json({message: 'You are not authorized to complete this action'}, 403);
-        return;
-      }
+  Utils.performRequestInGroup(req.body.groupKey, req, res, next, function(userInfo) {
+    var title = req.body.title;
+    // TODO: Actually create a task
+    console.log("Creating task: " + title);
+    res.json({message: 'Created task'}, 201);
+  });
 
-      var title = req.body.title;
-      // TODO: Actually create a task
-
-      console.log("Creating task: " + title);
-      res.json({message: 'Created task'}, 201);
-    }
-  );
 }
 
 function getTask(req, res, next) {
+  // TODO: Perform an authenticated request. 
+  // We'll pull the task first and check if its group is in the user's groups
+  // We'll write this explicitly first and then see if we can generalize
   Logger.log("info", "Getting a task (log)");
   console.log("Getting task: " + req.params.taskId);
   res.json({id: 101, title: "An awesome task", message: 'Got task'});

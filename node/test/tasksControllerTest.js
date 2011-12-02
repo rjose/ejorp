@@ -13,7 +13,7 @@ var vows = require('vows')
 TasksController.addRoutes(app, '/');
 app.listen(PORT);
 
-Auth.mockLookUpUser('123', 'my-token', {groups: [22, 33, 44], authTokens: ['my-token']});
+Auth.mockLookUpUser('123', 'my-token', {userId: '123', groups: [22, 33, 44], authTokens: ['my-token']});
 
 var DEFAULT_HEADERS = {'Content-Type': 'application/json',
   'Cookie': 'ejorp_auth=my-token; ejorp_userid=123'};
