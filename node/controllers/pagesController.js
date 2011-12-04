@@ -16,8 +16,7 @@ function topTasks(req, res, next) {
     },
     function requestDocument(err, user) {
       if (err) {
-        // TODO: Test this
-        console.log("TODO: Deal with unauthorized response")
+        // TODO: Test dealing with unauthorized response
         res.json(Auth.unauthorizedResponse());
         return next();
       }

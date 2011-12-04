@@ -15,9 +15,7 @@ var m_mockedLoginHashes = null;
 function lookUpUser(userId, authToken, callback) {
   if (m_mockUserData) {
     // TODO: Figure out what we should do if the record is missing
-    console.log(userId);
     var user = m_mockUserData[userId];
-    console.log(">>>" + user);
     if (!_.include(user.authTokens, authToken)) {
       callback("Invalid userId:" + userId + " for authToken: "+ authToken);
       return;
