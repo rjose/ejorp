@@ -2,6 +2,8 @@ package com.ejorp.core;
 
 import javax.persistence.*;
 
+// TODO: Get rid of this class
+
 /**
  * Created by IntelliJ IDEA.
  * User: rjose

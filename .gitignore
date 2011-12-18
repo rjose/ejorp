@@ -1,4 +1,7 @@
 war/target
 node/node_modules
 *.swp
-node/log/ejorp-node.log
+*.log
+*.pid
+.cake
+*.jar
