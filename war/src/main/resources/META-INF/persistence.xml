@@ -8,6 +8,6 @@
     <persistence-unit name="ejorpPU" transaction-type="JTA">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>jdbc/ejorp</jta-data-source>
-        <class>com.ejorp.core.Task</class>
+        <class>com.ejorp.core.SampleTask</class>
     </persistence-unit>
 </persistence>

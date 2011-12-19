@@ -93,9 +93,9 @@ public class HelloWorld {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
 
-        List<Task> tasks = em.createNamedQuery("findAllTasks").getResultList();
-        for(Task t: tasks) {
-            logger.info("-----> Task (from JPA): " + t.getName());
+        List<SampleTask> tasks = em.createNamedQuery("findAllTasks").getResultList();
+        for(SampleTask t: tasks) {
+            logger.info("-----> SampleTask (from JPA): " + t.getName());
         }
         em.close();
         emf.close();

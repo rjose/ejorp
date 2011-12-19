@@ -13,8 +13,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@NamedQuery(name = "findAllTasks", query = "SELECT t FROM Task t")
-public class Task {
+@NamedQuery(name = "findAllTasks", query = "SELECT t FROM SampleTask t")
+public class SampleTask {
 
     @Id @GeneratedValue
     private Long id;

@@ -22,13 +22,13 @@ public class CreateParserTest {
     public static class StaticProvider {
         @DataProvider(name="task title")
         public static Object[][] createData() {
-            return new Object[][] {{"- Task 1\n"}};
+            return new Object[][] {{"- SampleTask 1\n"}};
         }
 
         @DataProvider(name="task with data")
         public static Object[][] getTaskStringWithData() {
             StringBuilder builder = new StringBuilder();
-            builder.append("- Task 2\n");
+            builder.append("- SampleTask 2\n");
             builder.append(" > @rjose 5h\n");
             return new Object[][] {{builder.toString()}};
         }
@@ -36,7 +36,7 @@ public class CreateParserTest {
         @DataProvider(name="task with comments")
         public static Object[][] getTaskStringWithComments() {
             StringBuilder builder = new StringBuilder();
-            builder.append("- Task 3\n");
+            builder.append("- SampleTask 3\n");
             builder.append(" * Comment 1\n");
             builder.append(" * Comment 2\n");
             return new Object[][] {{builder.toString()}};
@@ -45,10 +45,10 @@ public class CreateParserTest {
         @DataProvider(name="two tasks")
         public static Object[][] getTwoTasks() {
             StringBuilder builder = new StringBuilder();
-            builder.append("- Task 4\n");
+            builder.append("- SampleTask 4\n");
             builder.append(" > @rjose 5-9h\n");
             builder.append("\n");
-            builder.append("- Task 5\n");
+            builder.append("- SampleTask 5\n");
             builder.append(" * Comment 1\n");
             return new Object[][] {{builder.toString()}};
         }
@@ -68,7 +68,7 @@ public class CreateParserTest {
     public void testParseTaskTitle(String input) throws RecognitionException {
         ArrayList<Task> tasks = parseTaskFile(input);
         assertEquals(1, tasks.size());
-        assertEquals("Task 1", tasks.get(0).getTitle());
+        assertEquals("SampleTask 1", tasks.get(0).getTitle());
     }
 
     @Test(dataProvider = "task with data", dataProviderClass = CreateParserTest.StaticProvider.class)
@@ -76,7 +76,7 @@ public class CreateParserTest {
         ArrayList<Task> tasks = parseTaskFile(input);
         Task task = tasks.get(0);
         assertEquals(1, tasks.size());
-        assertEquals("Task 2", task.getTitle());
+        assertEquals("SampleTask 2", task.getTitle());
         assertEquals("@rjose", task.getAssigneeHandle());
 
         ArrayList<Double> effortLeft = task.getEffortLeft();
@@ -89,7 +89,7 @@ public class CreateParserTest {
         ArrayList<Task> tasks = parseTaskFile(input);
         Task task = tasks.get(0);
         assertEquals(1, tasks.size());
-        assertEquals("Task 3", task.getTitle());
+        assertEquals("SampleTask 3", task.getTitle());
 
         ArrayList<String> notes= task.getNotes();
         assertEquals(2, notes.size());
