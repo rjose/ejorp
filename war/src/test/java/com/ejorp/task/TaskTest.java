@@ -16,7 +16,15 @@ import static org.testng.AssertJUnit.*;
 public class TaskTest {
     @Test
     public void testExtractTitle() {
-        assertEquals("Test 1", Task.extractTitle("- Test 1\n"));
+        ArrayList<String> titleInfo = Task.extractTitle("- Test 1\n");
+        assertEquals(1, titleInfo.size());
+        assertEquals("Test 1", titleInfo.get(0));
+
+        // Try a title with an ID
+        titleInfo = Task.extractTitle("- 512: Test 2\n");
+        assertEquals(2, titleInfo.size());
+        assertEquals("Test 2", titleInfo.get(0));
+        assertEquals("512", titleInfo.get(1));
     }
 
     @Test
@@ -47,7 +55,17 @@ public class TaskTest {
         ArrayList<Double> estimate;
         estimate = Task.parseEstimate("garbage");
         assertEquals(0, estimate.size());
+    }
 
+    @Test
+    public void testCreateTask() {
+        ArrayList<String> taskInfo = new ArrayList<String>();
+        taskInfo.add("My title");
+        taskInfo.add("101");
+
+        Task task = new Task(taskInfo);
+        assertEquals("My title", task.getTitle());
+        assertEquals("101", task.getID());
     }
 
     // TODO: Test parsing garbage

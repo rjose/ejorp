@@ -15,17 +15,32 @@ import java.util.regex.*;
 public class Task {
     private String title;
     private ArrayList<Double> effortLeft = new ArrayList<Double>();
+    private String id;
+
     private static final Pattern estimatePattern = Pattern.compile("(\\d+\\.?\\d*)\\s*h");
     private static final Pattern rangeEstimatePattern = Pattern.compile("(\\d+\\.?\\d*)\\s*\\-\\s*(\\d+\\.?\\d*)\\s*h");
+    private static final Pattern idTitlePattern = Pattern.compile("(\\d+):\\s*(.*)");
+
     // TODO: We may remove this when we figure out how to handle assignees
     private String assigneeHandle;
     private ArrayList<String> notes;
 
-    public static String extractTitle(String title) {
+    public static ArrayList<String> extractTitle(String title) {
         String[] strings = title.split("\\-\\s+", 2);
-        String result = title;
+        String taskTitle = title;
+        ArrayList<String> result = new ArrayList<String>();
+
         if (strings.length == 2) {
-            result = strings[1].trim();
+            taskTitle = strings[1].trim();
+
+            // Check if taskTitle looks like "512: Title"
+            Matcher titleMatcher = idTitlePattern.matcher(taskTitle);
+            if(titleMatcher.matches()) {
+                result.add(titleMatcher.group(2)); // Title
+                result.add(titleMatcher.group(1)); // ID
+            } else {
+                result.add(taskTitle);
+            }
         }
         return result;
     }
@@ -61,12 +76,25 @@ public class Task {
         return result;
     }
 
+    public Task(ArrayList<String> titleInfo) {
+        if (titleInfo.size() == 1) {
+            this.title = titleInfo.get(0);
+        } else if (titleInfo.size() == 2) {
+            this.title = titleInfo.get(0);
+            this.id= titleInfo.get(1);
+        }
+    }
+
     public Task(String title) {
         this.title = title;
     }
 
     public String getAssigneeHandle() {
         return assigneeHandle;
+    }
+
+    public String getID() {
+        return id;
     }
 
     public void setAssigneeHandle(String assigneeHandle) {

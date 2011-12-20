@@ -21,7 +21,7 @@ task returns [Task result]
     ('>' (a=assignee {result.setAssigneeHandle($a.text);} | e=estimate {result.setEstimate($e.text);})+)?
     (notes {result.addNotes($notes.result);})?;
 
-title returns [String result]
+title returns [ArrayList<String> result]
   : TASK_STRING {$result = Task.extractTitle($TASK_STRING.text);};
 
 estimate: ESTIMATE;
@@ -32,6 +32,7 @@ notes returns [ArrayList<String> result]
 @after {result = notes;}
   : (NOTE_STRING {notes.add(Task.extractNote($NOTE_STRING.text));})+;
 
+// TODO: Figure out how to import these from a common spot
 ESTIMATE
   : FLOAT WS* 'h'
 	| FLOAT WS* '-' WS* FLOAT 'h'
@@ -70,3 +71,4 @@ EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 
 fragment
 REST_OF_LINE : ~('\n'|'\r')* '\r'? '\n'+;
+

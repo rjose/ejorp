@@ -53,24 +53,52 @@
     <breakpoint_rules />
     <ui_properties />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="CreateParserTest.java" pinned="false" current="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/test/java/com/ejorp/parser/CreateParserTest.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state line="57" column="1" selection-start="1873" selection-end="2324" vertical-scroll-proportion="0.032119915">
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="ejorp" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CreateParserTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/ejorp/parser/CreateParserTest.java">
+      <file leaf-file-name="SampleTask.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ejorp/core/SampleTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="44" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.0">
+            <state line="13" column="23" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SampleTask.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ejorp/core/SampleTask.java">
+      <file leaf-file-name="UpdateParserTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/ejorp/parser/UpdateParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="13" selection-start="333" selection-end="333" vertical-scroll-proportion="0.21703297">
+            <state line="45" column="48" selection-start="1716" selection-end="1716" vertical-scroll-proportion="0.9170306">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CreateTask.g" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/antlr3/com/ejorp/parser/CreateTask.g">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="22" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -80,9 +108,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ejorp/core/HelloWorld.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="36" column="13" selection-start="906" selection-end="906" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,9 +116,9 @@
       <file leaf-file-name="TaskTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/ejorp/task/TaskTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="69" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
+            <state line="67" column="26" selection-start="1893" selection-end="1893" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1700#1708#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -101,10 +127,9 @@
       <file leaf-file-name="Task.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ejorp/task/Task.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="88" column="21" selection-start="2666" selection-end="2666" vertical-scroll-proportion="0.0">
+            <state line="83" column="36" selection-start="2869" selection-end="2869" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#377#385#0" expanded="true" />
+                <element signature="e#1061#1069#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -132,11 +157,12 @@
         <option value="$PROJECT_DIR$/src/main/antlr3/com/ejorp/parser/CreateTask.g" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/target/generated-sources/antlr3/com/ejorp/parser/CreateTaskParser.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/ejorp/task/TaskTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/ejorp/task/Task.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/ejorp/parser/CreateParserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ejorp/core/Task.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ejorp/core/SampleTask.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ejorp/parser/CreateParserTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ejorp/task/TaskTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ejorp/task/Task.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/ejorp/parser/UpdateParserTest.java" />
       </list>
     </option>
   </component>
@@ -250,7 +276,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,46 +291,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejorp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generated-sources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="antlr3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ejorp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="war" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="generated-sources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -546,10 +531,49 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="antlr3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ejorp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="war" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="antlr3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ejorp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Favorites" />
     </panes>
   </component>
@@ -568,7 +592,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
   </component>
-  <component name="RunManager" selected="TestNG.CreateParserTest">
+  <component name="RunManager" selected="TestNG.UpdateParserTest">
     <configuration default="false" name="HelloWorldTest.test" type="TestNG" factoryName="TestNG" temporary="true">
       <module name="ejorp" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -630,6 +654,35 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="UpdateParserTest" type="TestNG" factoryName="TestNG" temporary="true">
+      <module name="ejorp" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="com.ejorp.parser" />
+      <option name="MAIN_CLASS_NAME" value="com.ejorp.parser.UpdateParserTest" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -856,11 +909,12 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="TestNG.HelloWorldTest.test" />
       <item index="1" class="java.lang.String" itemvalue="TestNG.HelloWorldTest" />
       <item index="2" class="java.lang.String" itemvalue="TestNG.CreateParserTest" />
-      <item index="3" class="java.lang.String" itemvalue="TestNG.TaskTest" />
+      <item index="3" class="java.lang.String" itemvalue="TestNG.UpdateParserTest" />
+      <item index="4" class="java.lang.String" itemvalue="TestNG.TaskTest" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -900,7 +954,6 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3986755" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847682" sideWeight="0.49784482" order="7" side_tool="true" content_ui="tabs" />
@@ -909,12 +962,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847682" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1336207" sideWeight="0.6701987" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13793103" sideWeight="0.67152315" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23850575" sideWeight="0.6701987" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847682" sideWeight="0.49712643" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23850575" sideWeight="0.67152315" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32847682" sideWeight="0.49712643" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1006,11 +1060,6 @@
         <state line="19" column="0" selection-start="289" selection-end="500" vertical-scroll-proportion="0.40625" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/antlr3/com/ejorp/parser/CreateTask.g">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="22" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="168" column="0" selection-start="5905" selection-end="5905" vertical-scroll-proportion="0.0" />
@@ -1021,44 +1070,49 @@
         <state line="178" column="30" selection-start="7243" selection-end="7243" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ejorp/core/SampleTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="23" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ejorp/core/HelloWorld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="13" selection-start="906" selection-end="906" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ejorp/parser/CreateParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="57" column="1" selection-start="1873" selection-end="2324" vertical-scroll-proportion="0.032119915">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/antlr3/com/ejorp/parser/CreateTask.g">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="22" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/ejorp/task/TaskTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="69" selection-start="549" selection-end="549" vertical-scroll-proportion="0.0">
+        <state line="67" column="26" selection-start="1893" selection-end="1893" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1700#1708#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ejorp/task/Task.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="21" selection-start="2666" selection-end="2666" vertical-scroll-proportion="0.0">
+        <state line="83" column="36" selection-start="2869" selection-end="2869" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#377#385#0" expanded="true" />
+            <element signature="e#1061#1069#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/ejorp/parser/CreateParserTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/ejorp/parser/UpdateParserTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="44" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ejorp/core/HelloWorld.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="13" selection-start="906" selection-end="906" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ejorp/core/SampleTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="13" selection-start="333" selection-end="333" vertical-scroll-proportion="0.21703297">
+        <state line="45" column="48" selection-start="1716" selection-end="1716" vertical-scroll-proportion="0.9170306">
           <folding />
         </state>
       </provider>
