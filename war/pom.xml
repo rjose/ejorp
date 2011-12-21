@@ -80,8 +80,8 @@
 
 
         <dependency>
-            <groupId>ejorp</groupId>
-            <artifactId>ejorp</artifactId>
+            <groupId>ejorp_clj</groupId>
+            <artifactId>ejorp_clj</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

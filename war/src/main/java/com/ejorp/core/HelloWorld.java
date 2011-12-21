@@ -5,7 +5,6 @@
 package com.ejorp.core;
 
 import com.google.gson.Gson;
-import ejorp_clj.core.Sample;
 import org.apache.commons.io.IOUtils;
 
 import javax.naming.InitialContext;
@@ -69,7 +68,7 @@ public class HelloWorld {
         }
 
         Gson gson = new Gson();
-        double[] coeffs = {Sample.binomial(5, 3)};
+        double[] coeffs = {0.0, 10.0};
         return gson.toJson(coeffs);
     }
 
