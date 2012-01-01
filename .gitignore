@@ -5,3 +5,4 @@ node/node_modules
 *.pid
 .cake
 *.jar
+utils/layout-tasks/target
