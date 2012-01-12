@@ -1,3 +1,19 @@
+jar = "ejorp-0.0.1-SNAPSHOT.jar"
+target = "target/" + jar
+installed_target = ENV["HOME"] + "/.m2/repository/ejorp/ejorp/0.0.1-SNAPSHOT/" + jar
+
+file target => FileList["lib/**", "src/**", "test/**"] do
+  sh "mvn package"
+end
+
+file installed_target => [target] do
+  sh "mvn install"
+end
+
+task :default => [:install]
+task :build => [target]
+task :install => [installed_target]
+
 desc "Generate documentation files"
 task :doc do
   sh "cake marg"

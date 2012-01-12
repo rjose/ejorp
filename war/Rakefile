@@ -1,0 +1,16 @@
+war = "ejorp-1.0-SNAPSHOT.war"
+target = "target/" + war
+
+file target => FileList["clj/**", "src/**"] do
+  Dir.chdir "clj" do
+    sh "rake install"
+  end
+  sh "mvn package"
+end
+
+task :default => [:build]
+task :build => [target]
+
+task :test => [:build] do
+  sh "mvn test"
+end
