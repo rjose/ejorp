@@ -8,3 +8,6 @@ node/node_modules
 utils/layout-tasks/target
 utils/layout-tasks-clj/.lein-deps-sum
 utils/layout-tasks-clj/.lein-failures
+.idea
+.lein-deps-sum
+*.iml
