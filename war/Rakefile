@@ -1,7 +1,7 @@
 war = "ejorp-1.0-SNAPSHOT.war"
 target = "target/" + war
 
-file target => FileList["clj/**", "src/**"] do
+file target => FileList["clj/**", "src/**", "**/*.clj", "**/*.java"] do
   Dir.chdir "clj" do
     sh "rake install"
   end
