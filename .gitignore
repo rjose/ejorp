@@ -1,5 +1,5 @@
-war/target
 node/node_modules
+*target
 *.swp
 *.log
 *.pid
@@ -11,3 +11,6 @@ utils/layout-tasks-clj/.lein-failures
 .idea
 .lein-deps-sum
 *.iml
+*.ipr
+*.iws
+*nohup.out
