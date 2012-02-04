@@ -1,0 +1,11 @@
+<h1>UserID <%= userId %></h1>
+
+<% if (tasks.length) { %>
+  <ul>
+    <% tasks.forEach(function(task) { %>
+      <li><%= task.description %></li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  No tasks found.
+<% } %>

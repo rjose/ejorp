@@ -33,6 +33,13 @@ public class ListTasksHandler {
     public ListTasksHandler() {
     }
 
+    class Task {
+      public Task(String description) {
+        this.description = description;
+      }
+
+      private String description;
+    }
     /**
      * Retrieves representation of an instance of com.ejorp.helloworld.HelloWorld
      * @return an instance of java.lang.String
@@ -41,7 +48,9 @@ public class ListTasksHandler {
     @Produces("application/json")
     public String getHtml() throws IOException {
         Gson gson = new Gson();
-        double[] coeffs = {0.0, 10.0};
-        return gson.toJson(coeffs);
+        Task t1 = new Task("Task #1");
+        Task[] tasks = new Task[1];
+        tasks[0] = t1;
+        return gson.toJson(tasks);
     }
 }
