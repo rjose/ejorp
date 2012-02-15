@@ -1,4 +1,4 @@
-package com.ejorp.task;
+package com.ejorp.models;
 
 // TODO: Figure out how to document this
 

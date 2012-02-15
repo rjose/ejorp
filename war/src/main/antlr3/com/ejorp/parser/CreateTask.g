@@ -7,7 +7,7 @@ package com.ejorp.parser;
 @header {
 package com.ejorp.parser;
 
-import com.ejorp.task.Task;
+import com.ejorp.models.Task;
 }
 
 tasklist returns [ArrayList<Task> result]

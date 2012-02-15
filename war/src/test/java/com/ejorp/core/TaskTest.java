@@ -1,5 +1,6 @@
-package com.ejorp.task;
+package com.ejorp.core;
 
+import com.ejorp.models.Task;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
