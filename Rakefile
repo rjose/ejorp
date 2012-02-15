@@ -1,12 +1,14 @@
 ASADMIN=ENV['ASADMIN'] || "asadmin"
 NODE_PID="/tmp/node.pid"
 
+desc "Builds the ejorp war file"
 task :build_war => FileList["war/**"] do
   Dir.chdir "war" do
     sh "rake build"
   end
 end
 
+desc "Runs the frontend ejorp node server"
 task :run_node => FileList["node/**.js"] do
   Dir.chdir "node" do
     if File.exists? NODE_PID then
@@ -16,6 +18,7 @@ task :run_node => FileList["node/**.js"] do
   end
 end
 
+desc "Runs the backend ejorp glassfish server"
 task :run_glassfish => [:build_war] do
   CMD=ASADMIN + " list-domains"
   RUNNING=%x[#{CMD}]
