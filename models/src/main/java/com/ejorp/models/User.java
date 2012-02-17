@@ -4,7 +4,6 @@
  */
 package com.ejorp.models;
 
-import com.ejorp.core.EjorpSingleton;
 import com.google.gson.Gson;
 
 import redis.clients.jedis.Jedis;
