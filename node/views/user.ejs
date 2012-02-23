@@ -1,11 +1,11 @@
-<h1>UserID <%= userId %></h1>
+<h1><%= user.id %> <%= user.name %> <%= user.email %></h1>
 
-<% if (tasks.length) { %>
+<% if (user.objectives.length) { %>
   <ul>
-    <% tasks.forEach(function(task) { %>
-      <li><%= task %></li>
+    <% user.objectives.forEach(function(objective) { %>
+      <li><%= objective.id %> <%= objective.description %></li>
     <% }) %>
   </ul>
 <% } else { %>
-  No tasks found.
+  No objectives found.
 <% } %>

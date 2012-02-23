@@ -12,12 +12,12 @@ import redis.clients.jedis.Jedis;
 public class Objective {
     private Long id;
     private String description;
-    private User owner;
+    private Long ownerId;
 
-    private Objective(Long id, String description, User owner) {
-      this.id = id;
-      this.description = description;
-      this.owner = owner;
+    private Objective(Long id, String description, Long ownerId) {
+        this.id = id;
+        this.description = description;
+        this.ownerId = ownerId;
     }
 
     public static Objective create(Jedis jedis, String description,
@@ -25,9 +25,18 @@ public class Objective {
         Long id = jedis.incr("global:taskid");
         jedis.set("task:" + id.toString() + ":description", description);
         jedis.set("task:" + id.toString() + ":owner", owner.getId().toString());
-        jedis.sadd("user:" + owner.getId().toString() + ":tasks",
+        jedis.sadd("user:" + owner.getId().toString() + ":objectives",
                    id.toString());
-        return new Objective(id, description, owner);
+        return new Objective(id, description, owner.getId());
+    }
+
+    public static Objective get(Jedis jedis, Long id) {
+        String description = jedis.get("task:" + id.toString() + ":description");
+        String owner = jedis.get("task:" + id.toString() + ":owner");
+        if (description == null || owner == null) {
+            return null;
+        }
+        return new Objective(id, description, Long.decode(owner));
     }
 
     public Long getId() {
@@ -38,7 +47,7 @@ public class Objective {
       return description;
     }
 
-    public User getOwner() {
-      return owner;
+    public Long getOwner() {
+      return ownerId;
     }
 }

@@ -5,6 +5,8 @@
 package com.ejorp.handlers;
 
 import com.ejorp.core.EjorpSingleton;
+import com.ejorp.models.Objective;
+import com.ejorp.models.User;
 import com.google.gson.Gson;
 
 import javax.ejb.EJB;
@@ -18,9 +20,8 @@ import javax.ws.rs.core.UriInfo;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.logging.Logger;
 
 import redis.clients.jedis.Jedis;
@@ -35,21 +36,40 @@ public class ListTasksHandler {
     @EJB
     private EjorpSingleton ejorp;
 
+    private class Output {
+        public class Objective {
+            public Long id;
+            public String description;
+        }
+        public Long id;
+        public String name;
+        public String email;
+        public Collection<Objective> objectives;
+    }
+
     @GET
     @Produces("application/json")
-    public String getHtml(@PathParam("userId") String userId) throws IOException {
-        Set<String> results = new HashSet<String>();
+    public String getUser(@PathParam("userId") String userId) throws IOException {
+        Output output = new Output();
         JedisPool pool = ejorp.getJedisPool();
         Jedis jedis = pool.getResource();
         try {
-            Set<String> taskIds = jedis.smembers("user:" + userId + ":tasks");
-            for (String taskId : taskIds) {
-                results.add(jedis.get("task:" + taskId + ":description"));
+            User user = User.get(jedis, Long.decode(userId));
+            output.id = user.getId();
+            output.name = user.getName();
+            output.email = user.getEmail();
+            output.objectives = new ArrayList<Output.Objective>();
+            for (Long objectiveId : user.getObjectives()) {
+                Objective objective = Objective.get(jedis, objectiveId);
+                Output.Objective outputObjective = output.new Objective();
+                outputObjective.id = objective.getId();
+                outputObjective.description = objective.getDescription();
+                output.objectives.add(outputObjective);
             }
         } finally {
             pool.returnResource(jedis);
         }
         Gson gson = new Gson();
-        return gson.toJson(results);
+        return gson.toJson(output);
     }
 }

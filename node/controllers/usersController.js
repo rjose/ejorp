@@ -20,7 +20,7 @@ function index(req, res, next) {
         res.write("" + err);
         res.end();
       } else {
-        res.render('user.ejs', {userId: userId, tasks: JSON.parse(data)});
+        res.render('user.ejs', {user: JSON.parse(data)});
       }
     }
   );
