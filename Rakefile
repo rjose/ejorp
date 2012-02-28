@@ -1,8 +1,22 @@
 ASADMIN=ENV['ASADMIN'] || "asadmin"
 NODE_PID="/tmp/node.pid"
 
+desc "Builds the algos jar file"
+task :build_algos => FileList["algos/**"] do
+  Dir.chdir "algos" do
+    sh "rake install"
+  end
+end
+
+desc "Builds the models jar file"
+task :build_models => FileList["models/**"] do
+  Dir.chdir "models" do
+    sh "rake install"
+  end
+end
+
 desc "Builds the ejorp war file"
-task :build_war => FileList["war/**"] do
+task :build_war => FileList["war/**"] + [:build_algos, :build_models] do
   Dir.chdir "war" do
     sh "rake build"
   end

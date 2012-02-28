@@ -1,0 +1,9 @@
+jar = "algos-0.0.1-SNAPSHOT.jar"
+installed_target = ENV["HOME"] + "/.m2/repository/com/ejorp/algos/0.0.1-SNAPSHOT/" + jar
+
+file installed_target => FileList["**/*.clj"] do
+  sh "mvn install"
+end
+
+task :default => [:install]
+task :install => [installed_target]

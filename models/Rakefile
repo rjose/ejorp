@@ -1,0 +1,9 @@
+jar = "models-1.0.jar"
+installed_target = ENV["HOME"] + "/.m2/repository/com/ejorp/models/1.0/" + jar
+
+file installed_target => FileList["**/*.java"] do
+  sh "mvn install"
+end
+
+task :default => [:install]
+task :install => [installed_target]
