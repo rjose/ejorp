@@ -4,7 +4,7 @@
  */
 package com.ejorp.models;
 
-import com.ejorp.models.User;
+import com.ejorp.models.Person;
 import com.google.gson.Gson;
 
 import redis.clients.jedis.Jedis;
@@ -21,7 +21,7 @@ public class Objective {
     }
 
     public static Objective create(Jedis jedis, String description,
-                                   User owner) {
+                                   Person owner) {
         Long id = jedis.incr("global:taskid");
         jedis.set("task:" + id.toString() + ":description", description);
         jedis.set("task:" + id.toString() + ":owner", owner.getId().toString());

@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ejorp.handlers;
+package com.ejorp.controllers;
 
 import com.ejorp.core.EjorpSingleton;
 import com.ejorp.models.Objective;
-import com.ejorp.models.User;
+import com.ejorp.models.Person;
 import com.google.gson.Gson;
 
 import javax.ejb.EJB;
@@ -27,9 +27,9 @@ import java.util.logging.Logger;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-@Path("list_tasks/{userId}")
+@Path("list_tasks/{personId}")
 @Stateless
-public class ListTasksHandler {
+public class ListTasksController {
     @Context
     private UriInfo context;
 
@@ -49,17 +49,17 @@ public class ListTasksHandler {
 
     @GET
     @Produces("application/json")
-    public String getUser(@PathParam("userId") String userId) throws IOException {
+    public String getPerson(@PathParam("personId") String personId) throws IOException {
         Output output = new Output();
         JedisPool pool = ejorp.getJedisPool();
         Jedis jedis = pool.getResource();
         try {
-            User user = User.get(jedis, Long.decode(userId));
-            output.id = user.getId();
-            output.name = user.getName();
-            output.email = user.getEmail();
+            Person person = Person.get(jedis, Long.decode(personId));
+            output.id = person.getId();
+            output.name = person.getName();
+            output.email = person.getEmail();
             output.objectives = new ArrayList<Output.Objective>();
-            for (Long objectiveId : user.getObjectives()) {
+            for (Long objectiveId : person.getObjectives()) {
                 Objective objective = Objective.get(jedis, objectiveId);
                 Output.Objective outputObjective = output.new Objective();
                 outputObjective.id = objective.getId();

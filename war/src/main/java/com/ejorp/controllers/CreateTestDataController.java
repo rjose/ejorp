@@ -6,7 +6,7 @@ package com.ejorp.handlers;
 
 import com.ejorp.core.EjorpSingleton;
 import com.ejorp.models.Objective;
-import com.ejorp.models.User;
+import com.ejorp.models.Person;
 import com.google.gson.Gson;
 
 import javax.ejb.EJB;
@@ -26,7 +26,7 @@ import redis.clients.jedis.JedisPool;
 
 @Path("create_test_data/{suite}")
 @Stateless
-public class CreateTestDataHandler {
+public class CreateTestDataController {
     @Context
     private UriInfo context;
 
@@ -42,10 +42,10 @@ public class CreateTestDataHandler {
             Jedis jedis = pool.getResource();
             try {
                 jedis.flushDB();
-                User user = User.create(jedis, "Test User", "user@test.com");
-                Objective objective1 = Objective.create(jedis, "Goal 1", user);
-                Objective objective2 = Objective.create(jedis, "Goal 2", user);
-                result.put("Test User", user.getId());
+                Person person = Person.create(jedis, "Test Person", "person@test.com");
+                Objective objective1 = Objective.create(jedis, "Goal 1", person);
+                Objective objective2 = Objective.create(jedis, "Goal 2", person);
+                result.put("Test Person", person.getId());
                 result.put("Goal 1", objective1.getId());
                 result.put("Goal 2", objective2.getId());
             } finally {
